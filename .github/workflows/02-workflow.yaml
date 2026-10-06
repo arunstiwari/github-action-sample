@@ -13,6 +13,13 @@ jobs:
           node-version: 24.x
       - name: Print Node Version
         run: node --version
+  context-dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print GitHub Context
+        run: echo "$GITHUB_CONTEXT"
+        env:
+          GITHUB_CONTEXT: ${{toJson(github)}}
           
         
   
