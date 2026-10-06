@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: React action Setup
         id: react-action-setup
-        uses: ./.github/actions/react-action-setup
+        uses: ./.github/actions/reaction-action-setup
         with:
           node-version: '24.x'
           
