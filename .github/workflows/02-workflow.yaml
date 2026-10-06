@@ -25,6 +25,11 @@ jobs:
         run: echo "$RUNNER_CONTEXT"
         env:
           RUNNER_CONTEXT: ${{toJson(runner)}}
+
+      - name: Print Job Context
+        run: echo "$JOB_CONTEXT"
+        env:
+          JOB_CONTEXT: ${{toJson(job)}}
           
         
   
