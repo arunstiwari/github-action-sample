@@ -31,6 +31,11 @@ jobs:
         env:
           JOB_CONTEXT: ${{toJson(job)}}
 
+      - name: Print Steps context
+        run: echo "$STEPS_CONTEXT"
+        env:
+          STEPS_CONTEXT: ${{toJson(steps)}}
+
   use-context:
     runs-on: ubuntu-latest
     steps:
