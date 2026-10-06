@@ -30,6 +30,13 @@ jobs:
         run: echo "$JOB_CONTEXT"
         env:
           JOB_CONTEXT: ${{toJson(job)}}
+
+  use-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Summarize my run
+        run: echo "$ACTOR triggered an event $EVENT_NAME on code referenced $REF_NAME ($SHA)"
+      
           
         
   
