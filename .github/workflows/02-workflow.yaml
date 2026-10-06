@@ -20,6 +20,11 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
         env:
           GITHUB_CONTEXT: ${{toJson(github)}}
+
+      - name: Print Runner Context
+        run: echo "$RUNNER_CONTEXT"
+        env:
+          RUNNER_CONTEXT: ${{toJson(runner)}}
           
         
   
