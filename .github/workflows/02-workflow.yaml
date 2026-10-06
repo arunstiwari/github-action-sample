@@ -1,0 +1,16 @@
+name: 02-workflow
+on: workflow_dispatch
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7
+      - name: Setup NodeJS
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+          
+        
+  
