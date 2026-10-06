@@ -1,0 +1,51 @@
+name: React Application Setup
+description: It checks out the repository and setup Node.js
+
+inputs:
+  node-version:
+    description: 'The Node.js version to setup.'
+    required: false
+    default: '24.x'
+  working-directory:
+    description: 'Directory containing package.json and package-lock.json'
+    required: false
+    default: ./
+  install:
+    description: 'Whether to run npm ci. Set to false to only setup node'
+    required: false
+    default: 'true'
+
+outputs:
+  node-version:
+    description: 'The Node.js version that was actually installed'
+    value: ${{ steps.resolved.outputs.version }}
+  cache-hit:
+    description: 'Whether the npm cache was restored exactly.'
+    value: ${{ steps.node.outputs.cache-hit }}
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v7
+    - name: Setup Node
+      id: node
+      uses: actions/setup-node@v7
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'npm'
+        cache-dependency-path: ${{ inputs.working-directory }}/package-lock.json
+    - name: Install dependencies
+      if: inputs.install == 'true'
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: npm ci
+
+    - name: Record the resolved version
+      id: resolved
+      shell: bash
+      working-directory: ${{ inputs.working-directory}}
+      run: echo "version=${{node --version}}" >> "$GITHUB_OUTPUT"
+ 
+  
+    
