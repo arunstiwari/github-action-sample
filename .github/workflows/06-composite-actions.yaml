@@ -1,1 +1,14 @@
 
+name: Composite Actions
+on: workflow_dispatch
+
+jobs:
+  use-the-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: React action Setup
+        id: react-action-setup
+        uses: ./.github/actions/react-action-setup
+        with:
+          node-version: '24.x'
+          
