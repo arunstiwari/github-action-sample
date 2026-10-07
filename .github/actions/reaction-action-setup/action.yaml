@@ -31,8 +31,9 @@ runs:
         cache-dependency-path: '${{ inputs.working-directory}}/package-lock.json'
 
     - name: Install the dependencies
+      working-directory: ${{inputs.working-directory}}
+      shell: 
       run: |
-        cd ${{inputs.working-directory}}
         npm install 
         
         
