@@ -14,6 +14,11 @@ inputs:
     default: './'
     required: false
 
+  doWeWantToInstallDependencies:
+    description: Flag to decide whether we want to install dependencies or not
+    default: 'true'
+    required: false
+
 outputs:
   node-version: 
     description: 'The exact version of Node which was installed'
@@ -32,6 +37,7 @@ runs:
 
     - name: Install the dependencies
       working-directory: ${{inputs.working-directory}}
+      if: ${{ inputs.doWeWantToInstallDependencies == 'true' }}
       shell: 
       run: |
         npm install 
