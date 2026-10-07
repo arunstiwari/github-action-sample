@@ -35,6 +35,12 @@ runs:
       shell: 
       run: |
         npm install 
+
+    - name: Execute the Unit Test
+      working-directory: ${{inputs.working-directory}}
+      shell: 
+      run: |
+        npm ci
         
         
 
